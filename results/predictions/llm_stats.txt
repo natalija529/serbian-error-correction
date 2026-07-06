@@ -1,0 +1,5 @@
+Sentences: 800
+New API calls this run: 20
+Elapsed (new calls only): 3484.96s
+Sentences/sec (new calls only): 0.23
+Provider: groq, model: llama-3.3-70b-versatile, fewshot: False

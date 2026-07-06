@@ -1,0 +1,4 @@
+Sentences: 2000
+Elapsed: 21.06s
+Sentences/sec: 94.98
+min_count threshold: 1

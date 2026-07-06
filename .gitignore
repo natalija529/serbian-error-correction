@@ -1,0 +1,8 @@
+data/raw/
+data/processed/
+__pycache__/
+*.pyc
+.DS_Store
+data/test/llm_cache*/
+.env
+*.md

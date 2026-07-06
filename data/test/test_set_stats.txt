@@ -1,0 +1,11 @@
+Sentences generated: 2000
+Sentences with >=1 injected error: 2000
+Sentences skipped (no eligible word >= 3 chars): 0
+Total injected errors: 2000
+Average errors/sentence: 1.000
+Error type distribution:
+  diacritic        400  (20.0%)
+  substitution     400  (20.0%)
+  deletion         400  (20.0%)
+  insertion        400  (20.0%)
+  transposition    400  (20.0%)
