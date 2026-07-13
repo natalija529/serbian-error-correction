@@ -4,13 +4,6 @@ a Serbian QWERTZ adjacency map and five corruption functions, one per
 error type in instructions.md.
 """
 import random
-
-# --- Serbian (Latin) QWERTZ keyboard adjacency ------------------------------
-# Approximate row layout of a Serbian Latin keyboard, letter rows only (the
-# digit row is excluded so a typo can never turn a word into an alphanumeric
-# token, which would fall outside the word tokenizer downstream). Vertical
-# neighbors are derived by proportional column alignment across rows of
-# different lengths.
 _ROWS = [
     "qwertzuiopšđ",
     "asdfghjklčć",

@@ -13,7 +13,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from common import is_word, tokenize
 
-# Native Serbian Latin alphabet (27 letters: excludes foreign q, w, x, y).
 SERBIAN_ALPHABET = "abcčćdđefghijklmnoprsštuvzž"
 
 
@@ -38,7 +37,6 @@ def load_freq_dict(path: Path) -> Counter:
         return Counter(json.load(f))
 
 
-# --- Edit-distance candidate generation (Norvig-style) ----------------------
 
 def edits1(word: str, alphabet: str = SERBIAN_ALPHABET) -> set:
     splits = [(word[:i], word[i:]) for i in range(len(word) + 1)]
@@ -53,10 +51,6 @@ def edits2(word: str, alphabet: str = SERBIAN_ALPHABET) -> set:
     return {e2 for e1 in edits1(word, alphabet) for e2 in edits1(e1, alphabet)}
 
 
-# --- Dedicated diacritic-restoration candidate generator --------------------
-# c -> {c, č, ć}, s -> {s, š}, z -> {z, ž}, dj -> {dj, đ}. Enumerated directly
-# since a diacritic-stripped word can be far (edit distance) from its
-# original in aggregate (multiple diacritics) yet trivial to reconstruct.
 
 _CHAR_OPTIONS = {
     "c": ["c", "č", "ć"], "C": ["C", "Č", "Ć"],
@@ -87,7 +81,6 @@ def diacritic_candidates(word: str, max_candidates: int = 2000) -> set:
     return candidates
 
 
-# --- Detection & correction --------------------------------------------------
 
 def is_known(word: str, freq: Counter, min_count: int = 1) -> bool:
     return freq.get(word.lower(), 0) >= min_count

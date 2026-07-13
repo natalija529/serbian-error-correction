@@ -3,15 +3,7 @@ Step 1 - Corpus collection.
 
 Downloads a Serbian sentence corpus (Leipzig Corpora Collection, Wikipedia
 2021, 1M sentences), cleans it, transliterates any Cyrillic to Latin,
-tokenizes, deduplicates, and splits off a held-out set of sentences that are
-NEVER used for building the dictionary / n-gram models. The held-out set is
-the raw material for the synthetic test set generated in Step 2.
-
-The source is already one sentence per line, so no custom sentence
-segmentation is needed here (unlike a raw article/dump export).
-
-Usage:
-    python scripts/01_prepare_corpus.py
+tokenizes, deduplicates, and splits off a held-out set of sentences.
 
 Outputs:
     data/raw/srp_wikipedia_2021_1M.tar.gz   (downloaded archive, cached)
@@ -85,7 +77,7 @@ def clean_sentences(raw_path: Path):
                 continue
             sent = parts[1]
             sent = normalize_whitespace(sent)
-            # Drop leading list/citation markers (e.g. "; ", "• ") left over from Wikipedia markup.
+            # Drop leading list/citation markers (e.g. "; ", "• ").
             sent = re.sub(r"^[;•\-–*\s]+", "", sent).strip()
             if not sent:
                 continue

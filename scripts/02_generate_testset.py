@@ -6,14 +6,6 @@ were never used to build the dictionary/n-gram models) and injects
 realistic errors: diacritic stripping, keyboard-adjacent substitution,
 deletion, insertion, and adjacent-character transposition.
 
-Error types are assigned with a greedy load-balancing rule (whichever type
-is currently most under its target share, among types applicable to the
-sentence's eligible words, is chosen next) so the corpus ends up balanced
-across error types without needing to know the total error count up front.
-
-Usage:
-    python scripts/02_generate_testset.py
-
 Output:
     data/test/test_set.jsonl
     data/test/test_set_stats.txt   (error-type distribution, counts)

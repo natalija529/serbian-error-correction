@@ -5,14 +5,6 @@ Detection rule: a word is flagged as an error if it is not "known" (does not
 appear in the training-corpus frequency dictionary at or above min-count).
 This approach therefore cannot detect real-word errors (note for the report).
 
-Correction: among known candidates from (in order) the word itself, the
-dedicated diacritic-restoration generator, edit distance 1, edit distance 2,
-and diacritic-restoration-then-edit-distance-1, pick the one with the
-highest raw unigram frequency.
-
-Usage:
-    python scripts/03_norvig_corrector.py
-
 Output:
     data/processed/word_freq.json           (cached frequency dictionary)
     results/predictions/norvig.jsonl

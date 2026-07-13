@@ -8,14 +8,6 @@ Extracts qualitative examples for the report from the same predictions
   (c) errors every available approach failed on
   (d) LLM overcorrections (changed a word that was not actually an injected error)
 
-Restricted to the common subset of sentences every available approach
-was actually run on (same fairness fix as 06_evaluate.py), so e.g. a
-sentence outside the LLM's coverage never shows up in category (c) as
-if the LLM had failed on it too.
-
-Usage:
-    python scripts/07_error_analysis.py
-
 Output:
     results/error_analysis.md
 """
@@ -49,7 +41,7 @@ def load_predictions(name: str, test_set):
         indices = json.loads(indices_path.read_text(encoding="utf-8"))
     else:
         indices = list(range(len(test_set)))
-    # map test_set line index -> {"predicted":..., "changes":[...]}
+        
     by_index = {idx: pred for idx, pred in zip(indices, preds)}
     return by_index
 

@@ -6,19 +6,6 @@ asking for the corrected sentence only. Responses are cached to disk keyed
 by sentence text so a resumed/re-run never re-queries an already-answered
 sentence (this step costs money and time).
 
-The LLM's free-form output is aligned back to the corrupted sentence's
-tokens with difflib to figure out which words changed and where -
-"replace" blocks of equal length map cleanly index-for-index; ragged
-edits (the model added/removed/merged words - "overcorrection" territory)
-are attributed to the first affected index on a best-effort basis, which
-the false_positive_rate metric in 06_evaluate.py picks up as
-overcorrection.
-
-Usage:
-    export ANTHROPIC_API_KEY=...            # or OPENAI_API_KEY
-    python scripts/05_llm_corrector.py --provider anthropic
-    python scripts/05_llm_corrector.py --provider anthropic --fewshot --subset-size 300
-
 Output:
     data/test/llm_cache/<provider>_<model>.json   (raw response cache, resumable)
     results/predictions/llm.jsonl (or llm_fewshot.jsonl)
@@ -65,8 +52,6 @@ def main():
 
     indices = list(range(len(test_set)))
     if args.subset_size and args.subset_size < len(test_set):
-        # Take a prefix rather than reshuffling, so a subset run reuses whatever
-        # is already cached from a prior full/partial run in the same order.
         indices = indices[: args.subset_size]
 
     n_cached = sum(1 for i in indices if sentence_key(test_set[i]["corrupted"]) in cache)

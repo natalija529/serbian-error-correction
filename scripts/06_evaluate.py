@@ -9,23 +9,9 @@ file (produced by scripts 03/04/05), on the same test set:
   4. False positive rate / overcorrection
   5. Speed (sentences/sec, from the *_stats.txt written by each corrector)
 
-This script is safe to run after only Approach 1 and 2 exist (per the
-project's order of work) and will just pick up more rows once
-results/predictions/llm*.jsonl appear later.
-
-If approaches were evaluated on different numbers of sentences (e.g. the
-LLM run only covers a subset of the 2,000-sentence test set), the primary
-comparison in results.csv/summary.md restricts every approach to the
-common subset so the numbers are like-for-like; each approach's own full
-coverage is reported separately in results_full_coverage.csv for
-reference only.
-
 Also runs an exact McNemar test (paired, on the same common-subset errors)
 between every pair of approaches to check whether a correction-accuracy
 difference is statistically significant rather than noise.
-
-Usage:
-    python scripts/06_evaluate.py
 
 Output:
     results/results.csv               (fair comparison, common subset)
@@ -272,7 +258,6 @@ def main():
     display_cols = ["approach", "detection_recall", "correction_accuracy", "false_positive_rate", "sentences_per_sec"]
     type_cols = ["approach"] + [f"acc_{t}" for t in ERROR_TYPES]
 
-    # Fair comparison: every approach scored on the exact same sentences.
     common_rows = [evaluate_approach(name, test_set, restrict_to=common_indices) for name in available]
     df_common = pd.DataFrame(common_rows)
     df_common.to_csv(RESULTS_CSV, index=False)
@@ -288,8 +273,6 @@ def main():
     )
 
     if partial:
-        # Supplementary: each approach's own numbers over everything it actually processed
-        # (e.g. Norvig/n-gram ran on all 2000 sentences; the LLM run covered fewer).
         full_rows = [evaluate_approach(name, test_set) for name in available]
         df_full = pd.DataFrame(full_rows)
         df_full.insert(1, "n_sentences", [len(per_approach_indices[name]) for name in available])

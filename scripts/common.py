@@ -3,8 +3,7 @@ import re
 
 RANDOM_SEED = 42
 
-# --- Serbian Cyrillic -> Latin transliteration -----------------------------
-# Digraphs must be handled before single letters (Љ->Lj/LJ, Њ->Nj/NJ, Џ->Dž/DŽ).
+
 _DIGRAPHS = {
     "Љ": "Lj", "љ": "lj",
     "Њ": "Nj", "њ": "nj",
@@ -38,9 +37,6 @@ def cyrillic_to_latin(text: str) -> str:
     return _CYR_PATTERN.sub(lambda m: _ALL_MAP[m.group(0)], text)
 
 
-# --- Tokenization -----------------------------------------------------------
-# Words: letters (incl. Serbian Latin diacritics), digits, and internal
-# apostrophes/hyphens. Everything else (punctuation) is its own token.
 _TOKEN_RE = re.compile(r"[A-Za-zčćšžđČĆŠŽĐ0-9]+(?:[-'][A-Za-zčćšžđČĆŠŽĐ0-9]+)*|[^\sA-Za-zčćšžđČĆŠŽĐ0-9]")
 
 

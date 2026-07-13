@@ -18,8 +18,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 from common import is_word, tokenize
 
 BOS, EOS = "<s>", "</s>"
-ALPHA = 0.4  # stupid backoff discount
-ADD_K = 1.0  # add-k smoothing for the unigram base case
+ALPHA = 0.4  
+ADD_K = 1.0 
 
 
 def build_bigram_model(train_path: Path):

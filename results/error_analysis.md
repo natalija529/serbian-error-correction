@@ -28,7 +28,7 @@
 - corrupted: `Molekul glukoze zasladjuje rastvor, a dijelovi glukoznih lanaca daju viskoznu konzistenciju.`
 - original: `Molekul glukoze zaslađuje rastvor, a dijelovi glukoznih lanaca daju viskoznu konzistenciju.`
 - error: `zasladjuje` → should be `zaslađuje` (type: diacritic)
-- LLM predicted: `Molekul glukoze zaslađuje rastvor, a dijelovi glukoznih lanaca daju viskoznu konzistenciju.`
+- LLM predicted: `Molekul glukoze zaslađuje rastvor, a delovi glukoznih lanaca daju viskoznu konzistenciju.`
 
 **Example 5**
 
@@ -56,7 +56,7 @@
 - corrupted: `Tipične analize su analize prolaznih podataka za pravljenje upotrebno-definisanih lanaca, zavisnih analiza, alijas analiza, pokaznih analiza, iskejp analiza ird.`
 - original: `Tipične analize su analize prolaznih podataka za pravljenje upotrebno-definisanih lanaca, zavisnih analiza, alijas analiza, pokaznih analiza, iskejp analiza itd.`
 - error: `ird` → should be `itd` (type: substitution)
-- LLM predicted: `Tipične analize su analize prolaznih podataka za pravljenje upotrebno-definisanih lanaca, zavisnih analiza, alijas analiza, pokaznih analiza, escape analiza itd.`
+- LLM predicted: `Tipične analize su analize prolaznih podataka za pravljenje upotrebno-definisanih lanaca, zavisnih analiza, alijas analiza, pokaznih analiza, iskap analiza itd.`
 
 **Example 9**
 
@@ -198,7 +198,7 @@
 - corrupted: `Radi honorarno u butiku obuće Gles sbiper.`
 - original: `Radi honorarno u butiku obuće Gles sliper.`
 - error: `sbiper` → should be `sliper` (type: substitution)
-- predictions: norvig=`skiper`, ngram=`biper`, llm=`Schuhber`
+- predictions: norvig=`skiper`, ngram=`biper`, llm=`Šiper`
 
 **Example 7**
 
@@ -261,43 +261,43 @@
 
 **Example 5**
 
+- corrupted: `Molekul glukoze zasladjuje rastvor, a dijelovi glukoznih lanaca daju viskoznu konzistenciju.`
+- original: `Molekul glukoze zaslađuje rastvor, a dijelovi glukoznih lanaca daju viskoznu konzistenciju.`
+- LLM changed correct word: `dijelovi` → `delovi`
+- LLM predicted: `Molekul glukoze zaslađuje rastvor, a delovi glukoznih lanaca daju viskoznu konzistenciju.`
+
+**Example 6**
+
 - corrupted: `Poslednja faza bitke odigrala se u podnožiju brda, u dolini reke Morave, gde su se Srbi utvridli u dolini uz reku sa namerom da kontrolišu prelaze na reci.`
 - original: `Poslednja faza bitke odigrala se u podnožiju brda, u dolini reke Morave, gde su se Srbi utvrdili u dolini uz reku sa namerom da kontrolišu prelaze na reci.`
 - LLM changed correct word: `podnožiju` → `podnožju`
 - LLM predicted: `Poslednja faza bitke odigrala se u podnožju brda, u dolini reke Morave, gde su se Srbi utvrdili u dolini uz reku sa namerom da kontrolišu prelaze na reci.`
 
-**Example 6**
+**Example 7**
 
 - corrupted: `Razvijač Afdvanced Warfare-a je kompanija Sledgehamer gejms.`
 - original: `Razvijač Advanced Warfare-a je kompanija Sledgehamer gejms.`
 - LLM changed correct word: `Sledgehamer` → `Sledgehammer`
 - LLM predicted: `Razvijač Advanced Warfare-a je kompanija Sledgehammer Games.`
 
-**Example 7**
+**Example 8**
 
 - corrupted: `Marina Nikola je medju prvima 1927.`
 - original: `Marina Nikola je među prvima 1927.`
 - LLM changed correct word: `prvima` → `prvimama`
 - LLM predicted: `Marina Nikola je među prvimama 1927.`
 
-**Example 8**
+**Example 9**
 
 - corrupted: `Tipične analize su analize prolaznih podataka za pravljenje upotrebno-definisanih lanaca, zavisnih analiza, alijas analiza, pokaznih analiza, iskejp analiza ird.`
 - original: `Tipične analize su analize prolaznih podataka za pravljenje upotrebno-definisanih lanaca, zavisnih analiza, alijas analiza, pokaznih analiza, iskejp analiza itd.`
-- LLM changed correct word: `iskejp` → `escape`
-- LLM predicted: `Tipične analize su analize prolaznih podataka za pravljenje upotrebno-definisanih lanaca, zavisnih analiza, alijas analiza, pokaznih analiza, escape analiza itd.`
+- LLM changed correct word: `iskejp` → `iskap`
+- LLM predicted: `Tipične analize su analize prolaznih podataka za pravljenje upotrebno-definisanih lanaca, zavisnih analiza, alijas analiza, pokaznih analiza, iskap analiza itd.`
 
-**Example 9**
+**Example 10**
 
 - corrupted: `U mestu je pravoslavna Vazneenska crkva, pri kojoj služe parosi Toma Bogdanović i Toma Lazić.`
 - original: `U mestu je pravoslavna Vaznesenska crkva, pri kojoj služe parosi Toma Bogdanović i Toma Lazić.`
 - LLM changed correct word: `parosi` → `parohi`
 - LLM predicted: `U mestu je pravoslavna Vaznesenska crkva, pri kojoj služe parohi Toma Bogdanović i Toma Lazić.`
-
-**Example 10**
-
-- corrupted: `Na konkurs su primani laki potpnuo metalni avioni.`
-- original: `Na konkurs su primani laki potpuno metalni avioni.`
-- LLM changed correct word: `primani` → `primljeni`
-- LLM predicted: `Na konkurs su primljeni laki potpuni metalni avioni.`
 

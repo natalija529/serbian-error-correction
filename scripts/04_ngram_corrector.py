@@ -1,15 +1,9 @@
 """
 Step 4 - Approach 2: N-gram language model reranking.
 
-Detection and candidate generation are identical to Approach 1 (same
-frequency dictionary, same tiered edit-distance / diacritic-restoration
-candidate generator) so the comparison against Approach 1 isolates the
-effect of adding bigram context. The only difference: candidates are
-scored with score = log P(candidate | previous word) + log P(next word |
+Detection and candidate generation are identical to Approach 1.
+The only difference: candidates are scored with score = log P(candidate | previous word) + log P(next word |
 candidate) (stupid-backoff bigram model) instead of raw unigram frequency.
-
-Usage:
-    python scripts/04_ngram_corrector.py
 
 Output:
     data/processed/bigram_model.json   (cached unigram+bigram counts)

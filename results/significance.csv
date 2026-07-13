@@ -1,4 +1,4 @@
 approach_a,approach_b,a_only_correct,b_only_correct,p_value,significant_at_0.05
-Dictionary + Edit Distance,N-gram Reranking,7,38,3.1213096463034162e-06,True
-Dictionary + Edit Distance,LLM Zero-shot,90,190,2.2431239990730362e-09,True
-N-gram Reranking,LLM Zero-shot,97,166,2.490701445976266e-05,True
+Dictionary + Edit Distance,N-gram Reranking,14,92,3.0602379412652396e-15,True
+Dictionary + Edit Distance,LLM Zero-shot,249,433,1.7926452486004485e-12,True
+N-gram Reranking,LLM Zero-shot,266,372,3.1010308077483124e-05,True

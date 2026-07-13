@@ -220,7 +220,7 @@ def align_changes(corrupted: str, llm_sentence: str) -> dict:
         corrupted_slice = corrupted_tokens[i1:i2]
         llm_slice = llm_tokens[j1:j2]
         if not corrupted_slice:
-            continue  # pure insertion in LLM output; no corrupted-sentence index to attribute it to
+            continue  
         if len(corrupted_slice) == len(llm_slice):
             for k in range(len(corrupted_slice)):
                 changes[i1 + k] = llm_slice[k]
