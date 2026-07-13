@@ -220,6 +220,44 @@ def make_charts(df: pd.DataFrame):
     fig.savefig(CHARTS_DIR / "per_error_type.png", dpi=150)
     plt.close(fig)
 
+    fig, ax = plt.subplots(figsize=(7, 4.5))
+    x = range(len(df))
+    width = 0.35
+    ax.bar([xi - width / 2 for xi in x], df["detection_recall"], width=width, label="Detection recall", color="#4C72B0")
+    ax.bar([xi + width / 2 for xi in x], df["correction_accuracy"], width=width, label="Correction accuracy", color="#DD8452")
+    ax.set_xticks(list(x))
+    ax.set_xticklabels(df["approach"], rotation=15, ha="right")
+    ax.set_ylabel("Share of injected errors")
+    ax.set_title("Detection recall vs. correction accuracy")
+    ax.set_ylim(0, 1)
+    ax.legend()
+    plt.tight_layout()
+    fig.savefig(CHARTS_DIR / "detection_vs_accuracy.png", dpi=150)
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(6, 4))
+    ax.bar(df["approach"], df["false_positive_rate"], color="#C44E52")
+    ax.set_ylabel("False positive rate")
+    ax.set_title("Overcorrection: originally-correct words changed")
+    for i, v in enumerate(df["false_positive_rate"]):
+        ax.text(i, v + max(df["false_positive_rate"]) * 0.02, f"{v:.3f}", ha="center")
+    plt.xticks(rotation=15, ha="right")
+    plt.tight_layout()
+    fig.savefig(CHARTS_DIR / "false_positive_rate.png", dpi=150)
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(6, 4))
+    ax.bar(df["approach"], df["sentences_per_sec"], color="#55A868")
+    ax.set_yscale("log")
+    ax.set_ylabel("Sentences / sec (log scale)")
+    ax.set_title("Speed by approach")
+    for i, v in enumerate(df["sentences_per_sec"]):
+        ax.text(i, v * 1.15, f"{v:.2f}", ha="center")
+    plt.xticks(rotation=15, ha="right")
+    plt.tight_layout()
+    fig.savefig(CHARTS_DIR / "speed_comparison.png", dpi=150)
+    plt.close(fig)
+
 
 def main():
     test_set = load_jsonl(TEST_SET_PATH)
